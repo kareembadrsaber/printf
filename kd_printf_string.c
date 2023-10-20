@@ -1,15 +1,15 @@
 #include "main.h"
 /**
  * kd_printf_string - print a string.
- * @kd_val: argument.
+ * @kd_list: argument.
  * Return: the length of the string.
  */
-int kd_printf_string(va_list kd_val)
+int kd_printf_string(va_list kd_list)
 {
 	char *kd_s;
 	int kd_i, kd_len;
 
-	kd_s = va_arg(kd_val, char *);
+	kd_s = va_arg(kd_list, char list*);
 	if (kd_s == NULL)
 	{
 		kd_s = "(null)";
