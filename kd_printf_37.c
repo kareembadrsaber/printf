@@ -5,6 +5,6 @@
  */
 int kd_printf_37(void)
 {
-	_putchar(37);
+	kd_putchar(37);
 	return (1);
 }
