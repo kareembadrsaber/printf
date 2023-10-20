@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * kd_printf_string - print a string.
  * @kd_list: argument.
@@ -9,8 +10,6 @@ int kd_printf_string(va_list kd_list)
 {
     char *kd_str;
     int kd_i, kd_len;
-
-<<<<<<< HEAD
     kd_str = va_arg(kd_list, char *);
     if (kd_str == NULL)
     {
@@ -27,7 +26,7 @@ int kd_printf_string(va_list kd_list)
            kd _putchar(kd_str[kd_i]);
         return kd_len;
     }
-=======
+
 	kd_s = va_arg(kd_list, char list*);
 	if (kd_s == NULL)
 	{
@@ -44,5 +43,4 @@ int kd_printf_string(va_list kd_list)
 			_putchar(kd_s[kd_i]);
 		return (kd_len);
 	}
->>>>>>> c25759dd83e384bf7cce49574128eaa9bc414d67
 }
