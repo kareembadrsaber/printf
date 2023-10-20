@@ -35,7 +35,7 @@ int kd_printf_srev(va_list kd_args);
 int kd_printf_rot13(va_list kd_args);
 int kd_printf_int(va_list kd_args);
 int kd_printf_dec(va_list kd_args);
-int kd_strlen(char *kd_s);
+int kd_strlen(char *kd_str);
 int *kd__strcpy(char *kd_dest, char *kd_src);
 int kd_strlenc(const char *kd_str);
 int kd_rev_string(char *kd_str);
