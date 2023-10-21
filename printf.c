@@ -1,58 +1,45 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
-
 /**
- * my_printf - A simplified printf implementation for 'c', 's', '%', 'd', and 'i' specifiers
- * @format: The format string
- * @...: Additional arguments
- *
- * Return: Number of characters printed (excluding null byte)
+ * printf - is a function that choose the right function to print.
+ * @format:The format string containing specifiers.
+ * Return: the length of the string.
  */
-int printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
-    va_list args;
-    int len = 0;
+	ConversionInfo m[] = {
+		{"%s", printf_string}, {"%c", printf_char},
+		{"%%", printf_37},
+		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
+		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
+		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
+	};
 
-    va_start(args, format);
+	va_list args;
+	int i = 0, j, len = 0;
 
-    while (*format)
-    {
-        if (*format != '%')
-        {
-            _putchar(*format);
-            len++;
-        }
-        else
-        {
-            format++; // Move past '%'
-            switch (*format)
-            {
-                case 'c':
-                    _putchar(va_arg(args, int));
-                    len++;
-                    break;
-                case 's':
-                    len += printf("%s", va_arg(args, char *));
-                    break;
-                case '%':
-                    _putchar('%');
-                    len++;
-                    break;
-                case 'd':
-                case 'i':
-                    len += printf("%d", va_arg(args, int));
-                    break;
-                default:
-                    _putchar('%');
-                    _putchar(*format);
-                    len += 2;
-                    break;
-            }
-        }
-        format++;
-    }
+	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
-    va_end(args);
-    return len;
+Here:
+	while (format[i] != '\0')
+	{
+		j = 13;
+		while (j >= 0)
+		{
+			if (m[j].kd[0] == format[i] && m[j].kd[1] == format[i + 1])
+			{
+				len += m[j].f(args);
+				i = i + 2;
+				goto Here;
+			}
+			j--;
+		}
+		_putchar(format[i]);
+		len++;
+		i++;
+	}
+	va_end(args);
+	return (len);
 }
