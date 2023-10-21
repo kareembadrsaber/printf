@@ -2,10 +2,10 @@
 #include <stdarg.h>
 
 /**
- * _printf - Custom printf implementation
+ * printf -  function for the standard printf
  * @format: The format string
  *
- * Return: Number of characters printed (excluding null byte)
+ * Return: Number of characters printed 
  */
 int _printf(const char *format, ...)
 {
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 					len += _putchar(va_arg(args, int));
 					break;
 				case 's':
-					len += _puts(va_arg(args, char *));
+					len += printf("%s", va_arg(args, char *));
 					break;
 				case '%':
 					len += _putchar('%');
